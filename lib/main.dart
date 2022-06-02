@@ -31,12 +31,19 @@ class _MyAppState extends State<MyApp> {
       body: Padding(
         padding: const EdgeInsets.all(28.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: quotes
-              .map((quote) => Mycard(quote:quote))
+              .map((quote) => Mycard(
+                    quote: quote,
+                    delete:(){ 
+                      setState(() {
+                        quotes.remove(quote);
+                      });
+                    }
+                  ))
               .toList(),
         ),
       ),
     );
   }
 }
-
